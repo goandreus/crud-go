@@ -47,10 +47,10 @@ func DeletePersonEndpoint(w http.ResponseWriter, req *http.Request) {
 	for index, item := range people {
 		if item.ID == params["id"] {
 			people = append(people[:index], people[index+1:]...)
-			return
+			break
 		}
 	}
-
+	json.NewEncoder(w).Encode(people)
 }
 
 func main() {
