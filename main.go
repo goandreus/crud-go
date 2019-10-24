@@ -41,9 +41,9 @@ func main() {
 	people = append(people, Person{ID: "2", FirstName: "Carlos", LastName: "Chavez"})
 
 	router.HandleFunc("/people", GetPeopleEndpoint).Methods("GET")
-	router.HandleFunc("/pe ople{id}", GetPersonEndpoint).Methods("GET")
-	router.HandleFunc("/people{id}", CreatePersonEndpoint).Methods("GET")
-	router.HandleFunc("/people", DeletePersonEndpoint).Methods("GET")
+	router.HandleFunc("/people/{id}", GetPersonEndpoint).Methods("GET")
+	router.HandleFunc("/people/{id}", CreatePersonEndpoint).Methods("POST")
+	router.HandleFunc("/people/{id}", DeletePersonEndpoint).Methods("DELETE")
 
 	log.Fatal(http.ListenAndServe(":3000", router))
 }
